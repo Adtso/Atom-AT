@@ -1,20 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package atom.at;
 
-/**
- *
- * @author aitor
- */
-public class AtomAT {
+import robocode.*;
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
+public class AtomAT extends Robot{
+
+    public void Run() {
+        ahead(100);
     }
     
 }

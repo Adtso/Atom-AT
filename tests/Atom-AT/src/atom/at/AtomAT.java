@@ -1,11 +1,21 @@
 package atom.at;
 
 import robocode.*;
+import java.util.Arrays;
 
-public class AtomAT extends AdvancedRobot{
-        
+public class AtomAT extends AdvancedRobot{ // Actua com a lider (crea array de opciones y envia su estado a compañeros).
+    
+    DistCoordOcupat[] array_opcions = null;
+    Coordinates pos_actual = new Coordinates(getX(), getY());
+           
     public void run() {
-        ahead(100);
+        cornersMesPropers(pos_actual, array_opcions);    
+        
+        // Girar correctamente Robot.
+        ahead(array_opcions[0].dist); // Avanza a las coordenadas indicadas.
+        array_opcions[0].ocupat = true;
+        
+        // Envia indicacion de que las coordenadas del array_opcions estan ocupadas.
     }
     
     class DistCoordOcupat {
@@ -14,25 +24,22 @@ public class AtomAT extends AdvancedRobot{
         Coordinates coord;
     };
     
-    public DistCoordOcupat[] corners_mes_propers(Coordinates c)
+    public void cornersMesPropers(Coordinates c, DistCoordOcupat[] opcions)
     {
-        //new Coord (2, 0);
         Coordinates[] corners = {
             new Coordinates (0, 0),
             new Coordinates (0, getBattleFieldHeight()),
             new Coordinates (getBattleFieldWidth(), 0),
             new Coordinates (getBattleFieldWidth(), getBattleFieldHeight())
         };
-            
-        DistCoordOcupat[] opcions = null;
-        
+                   
         for (int i = 0; i < 4; i++) {
             opcions[i].dist = c.distancia(corners[i]);
             opcions[i].coord = corners[i];
             opcions[i].ocupat = false;
         }
         
-        return opcions;
+        Arrays.sort(opcions); // Ordenamos el array de opciones (distancia mas cercana a distancia mas lejana).
     }
     
 }

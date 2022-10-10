@@ -4,9 +4,10 @@ import robocode.*;
 
 import java.util.Arrays;
 import java.awt.*;
+import java.awt.geom.Point2D;
 import java.io.IOException;
 
-public class AtomAT extends TeamRobot{ // Actua com a lider (crea array de opciones y envia su estado a compañeros).
+public class Leader extends TeamRobot{ // Actua com a lider (crea array de opciones y envia su estado a compañeros).
     
     DistCoordOcupat[] array_opcions = null;
     Coordinates pos_actual = new Coordinates(getX(), getY());
@@ -24,7 +25,7 @@ public class AtomAT extends TeamRobot{ // Actua com a lider (crea array de opcio
 
 		try {
 			// Enviar posicio d'enemic a equip
-            Point enemy = new Point (enemyX, enemyY);
+            Point2D.Double enemy = new Point2D.Double (enemyX, enemyY);
 			broadcastMessage(enemy);
 		} catch (IOException ex) {
 			out.println("Unable to send order: ");

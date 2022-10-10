@@ -7,7 +7,7 @@ import java.awt.*;
 import java.io.IOException;
 import java.awt.geom.Point2D;
 
-public class Soldier extends TeamRobot implements Droid{
+public class Soldier extends TeamRobot{
     
     public void run(){
         //preparem el color dels soldats
